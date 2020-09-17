@@ -7,12 +7,15 @@ function App() {
   const [actors] = useState(contacts)
 
   function displayActors(data) {
-    return data.map(actor => {
-      return <tr>
-        <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
-        <th>{actor.name}</th>
-        <th>{actor.popularity}</th>
-      </tr>
+
+    return data.map((actor, i) => {
+      if (i < 5) {
+        return <tr key={actor.id}>
+          <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
+          <th>{actor.name}</th>
+          <th>{actor.popularity}</th>
+        </tr>
+      }
     })
   }
 
