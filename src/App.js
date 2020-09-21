@@ -8,6 +8,7 @@ function App() {
 
   function displayActors(data) {
 
+    // eslint-disable-next-line array-callback-return
     return data.map((actor, i) => {
       if (i < 5) {
         return <tr key={actor.id}>
