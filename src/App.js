@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import contacts from './contacts.json';
+import Header from './components/Header'
+import Button from './components/Button';
 
 function App() {
-  // use hooks for state
+  // Use hooks for state
   const [actors] = useState(contacts)
 
   function displayActors(data) {
@@ -22,6 +24,8 @@ function App() {
 
   return (
     <div>
+      <Header />
+      <Button />
       <table>
         <thead>
           <tr>
