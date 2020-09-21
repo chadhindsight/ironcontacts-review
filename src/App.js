@@ -8,8 +8,12 @@ function App() {
   // Use hooks for state
   const [actors] = useState(contacts)
 
-  function displayActors(data) {
+  //Logic that shows a random contact
+  function randomizeContact() {
 
+  }
+
+  function displayActors(data) {
     // eslint-disable-next-line array-callback-return
     return data.map((actor, i) => {
       if (i < 5) {
