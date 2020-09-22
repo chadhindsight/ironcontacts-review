@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import contacts from './contacts.json';
 import Header from './components/Header'
-import Button from './components/Button';
 
 function App() {
   // Use hooks for state
@@ -11,7 +10,9 @@ function App() {
   //Logic that shows a random contact
   function randomizeContact() {
     // Select random contact and put it to the start of contact list
-    let newContact = Math.round(Math.random * actors.length);
+    let newContact = Math.round(Math.random() * actors.length);
+
+    console.log(newContact)
   }
 
   function displayActors(data) {
@@ -30,7 +31,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Button />
+      <button onClick={randomizeContact()}>Add Random Contact</button>
       <table>
         <thead>
           <tr>
