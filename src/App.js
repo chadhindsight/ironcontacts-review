@@ -10,7 +10,8 @@ function App() {
 
   //Logic that shows a random contact
   function randomizeContact() {
-
+    // Select random contact and put it to the start of contact list
+    let newContact = Math.round(Math.random * actors.length);
   }
 
   function displayActors(data) {
