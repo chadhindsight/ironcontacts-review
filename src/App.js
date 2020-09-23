@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import contacts from './contacts.json';
 import Header from './components/Header'
 
 function App() {
   // Use hooks for initial state
-  const [actors, setActors] = useState(contacts.slice(0, 5))
-  const [remainingContacts, setRemaining] = useState(contacts)
-  console.log(actors)
+  const [actors, setActors] = useState([])
+  const [remainingContacts] = useState(contacts)
+  console.log(typeof actors, actors)
 
-  //Logic that shows a random contact
-  function randomizeContact() {
-    // Select random contact and put it to the start of contact list
-    let newActor = Math.round(Math.random() * remainingContacts.length);
 
-    // Pass new array to setActors
-    let updatedContacts = [...actors].unshift(newActor)
-    setActors(updatedContacts)
-
-    // Update list of remaining contacts
-    let remainingContactsCopy = [...remainingContacts]
-    setRemaining(remainingContactsCopy.splice(newActor, 1))
-    // console.log(`setRemaining: ${remainingContacts}`)
-  }
+  useEffect(() => {
+    setActors(contacts.slice(0, 5))
+  }, []);
 
   function displayActors(data) {
     // eslint-disable-next-line array-callback-return
@@ -36,11 +26,23 @@ function App() {
     })
   }
 
+  //Logic that shows a random contact
+  function randomizeContact(ass) {
+    // Select random contact and put it to the start of contact list
+
+    let randomContact = remainingContacts[Math.floor(Math.random() * remainingContacts.length)]
+
+    // Pass new array to setActors
+    ass.unshift(randomContact)
+    setActors([...ass])
+    // Update list of remaining contacts
+
+  }
+
   return (
     <div>
       <Header />
-      {/* No Need to instantiate randomizeContact */}
-      <button onClick={randomizeContact}>Add Random Contact</button>
+      <button onClick={() => randomizeContact(remainingContacts)}>Add Random Contact</button>
       <table>
         <thead>
           <tr>
@@ -50,7 +52,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {displayActors(actors)}
+          {displayActors(actors.slice(0, 5))}
 
         </tbody>
       </table>
