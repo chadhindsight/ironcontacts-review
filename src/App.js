@@ -27,14 +27,13 @@ function App() {
   }
 
   //Logic that shows a random contact
-  function randomizeContact(ass) {
+  function randomizeContact(list) {
     // Select random contact and put it to the start of contact list
-
     let randomContact = remainingContacts[Math.floor(Math.random() * remainingContacts.length)]
 
     // Pass new array to setActors
-    ass.unshift(randomContact)
-    setActors([...ass])
+    list.unshift(randomContact)
+    setActors([...list])
     // Update list of remaining contacts
 
   }
