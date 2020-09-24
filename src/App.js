@@ -3,6 +3,7 @@ import './App.css';
 import contacts from './contacts.json';
 import Header from './components/Header'
 import SortNameButton from './components/SortNameButton';
+import SortPopButton from './components/SortPopButton';
 
 function App() {
   // Use hooks for initial state
@@ -40,9 +41,19 @@ function App() {
   }
 
   // Sort contacts by name
+
+
   function sortName() {
     console.log('sorted')
     let updatedList = [...actors].sort((a, b) => a.name.localeCompare(b.name))
+    setActors(updatedList)
+  }
+
+  // Sort by popularity(highest first)
+  function sortByPop() {
+    console.log('popularity')
+    // sort by bigger number in popularity
+    let updatedList = [...actors].sort((x, y) => y.popularity - x.popularity)
     setActors(updatedList)
   }
 
@@ -51,6 +62,7 @@ function App() {
       <Header />
       <button onClick={() => randomizeContact()}>Add Random Contact</button>
       <SortNameButton sortName={sortName} />
+      <SortPopButton sortByPop={sortByPop} />
       <table>
         <thead>
           <tr>
