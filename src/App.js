@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import contacts from './contacts.json';
 import Header from './components/Header'
+import SortNameButton from './components/SortNameButton';
 
 function App() {
   // Use hooks for initial state
   const [actors, setActors] = useState([])
-  // Need a way to update remaining contacts with second arg
   const [remainingContacts, setRemainingContacts] = useState(contacts)
   console.log(typeof actors, actors)
 
@@ -34,17 +34,23 @@ function App() {
     let randoNum = Math.floor(Math.random() * remainingContacts.length)
     let randomContact = remainingContacts[randoNum]
     actors.unshift(randomContact)
-
     // Update list of remaining contacts
     let remainingContactsCopy = [...remainingContacts].splice(randoNum, randoNum + 1)
     setRemainingContacts(remainingContactsCopy)
-    // console.log(randoNum)
+  }
+
+  // Sort contacts by name
+  function sortName() {
+    console.log('sorted')
+    let updatedList = [...actors].sort((a, b) => a.name.localeCompare(b.name))
+    setActors(updatedList)
   }
 
   return (
     <div>
       <Header />
       <button onClick={() => randomizeContact()}>Add Random Contact</button>
+      <SortNameButton sortName={sortName} />
       <table>
         <thead>
           <tr>
