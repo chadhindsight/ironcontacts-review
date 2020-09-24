@@ -33,10 +33,7 @@ function App() {
     // Select random contact and put it to the start of contact list
     let randoNum = Math.floor(Math.random() * remainingContacts.length)
     let randomContact = remainingContacts[randoNum]
-
-    // Pass new array to setActors
     actors.unshift(randomContact)
-    // setActors([...list])
 
     // Update list of remaining contacts
     let remainingContactsCopy = [...remainingContacts].splice(randoNum, randoNum + 1)
