@@ -14,14 +14,13 @@ function App() {
   // Empty arr tells React that your effect doesn't depend on any values from props or state, so it never needs to re-run
   useEffect(() => {
     setActors(contacts.slice(0, 5))
-    setRemainingContacts(contacts)
   }, []);
 
   function displayActors(data) {
     // eslint-disable-next-line array-callback-return
     return data.map((actor, i) => {
 
-      return <tr key={actor.id}>
+      return <tr key={i}>
         <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
         <th>{actor.name}</th>
         <th>{actor.popularity}</th>
@@ -30,25 +29,25 @@ function App() {
   }
 
   //Logic that adds a random contact
-  function randomizeContact(list) {
+  function randomizeContact() {
     // Select random contact and put it to the start of contact list
     let randoNum = Math.floor(Math.random() * remainingContacts.length)
     let randomContact = remainingContacts[randoNum]
 
     // Pass new array to setActors
-    list.unshift(randomContact)
-    setActors([...list])
+    actors.unshift(randomContact)
+    // setActors([...list])
 
     // Update list of remaining contacts
     let remainingContactsCopy = [...remainingContacts].splice(randoNum, randoNum + 1)
     setRemainingContacts(remainingContactsCopy)
-    console.log(randoNum)
+    // console.log(randoNum)
   }
 
   return (
     <div>
       <Header />
-      <button onClick={() => randomizeContact(remainingContacts)}>Add Random Contact</button>
+      <button onClick={() => randomizeContact()}>Add Random Contact</button>
       <table>
         <thead>
           <tr>
