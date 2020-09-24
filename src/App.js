@@ -25,6 +25,7 @@ function App() {
         <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
         <th>{actor.name}</th>
         <th>{actor.popularity}</th>
+        <button>delete</button>
       </tr>
     })
   }
@@ -69,6 +70,7 @@ function App() {
             <th>Picture</th>
             <th>Name</th>
             <th>Popularity</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
