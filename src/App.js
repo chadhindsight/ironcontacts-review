@@ -25,7 +25,7 @@ function App() {
         <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
         <th>{actor.name}</th>
         <th>{actor.popularity}</th>
-        <button>delete</button>
+        <td><button onClick={() => deleteContact(actor.id)}>Remove</button></td>
       </tr>
     })
   }
@@ -56,6 +56,13 @@ function App() {
     // sort by bigger number in popularity
     let updatedList = [...actors].sort((x, y) => y.popularity - x.popularity)
     setActors(updatedList)
+  }
+
+  // Delete a contact from contact list
+  function deleteContact(id) {
+    let updatedList = [...actors].filter(actor => actor.id !== id)
+    setActors(updatedList)
+
   }
 
   return (
