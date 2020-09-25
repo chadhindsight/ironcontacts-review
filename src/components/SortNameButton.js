@@ -1,9 +1,10 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const SortNameButton = (props) => {
     return (
         <>
-            <button onClick={() => props.sortName()}>Sort By Name</button>
+            <Button onClick={() => props.sortName()}>Sort By Name</Button>
         </>
     );
 };

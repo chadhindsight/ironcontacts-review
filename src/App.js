@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import contacts from './contacts.json';
-import Header from './components/Header'
+import Header from './components/Header';
 import SortNameButton from './components/SortNameButton';
 import SortPopButton from './components/SortPopButton';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 function App() {
   // Use hooks for initial state
@@ -25,7 +27,7 @@ function App() {
         <th><img src={`${actor.pictureUrl}`} alt="pretty person" /></th>
         <th>{actor.name}</th>
         <th>{actor.popularity}</th>
-        <td><button onClick={() => deleteContact(actor.id)}>Remove</button></td>
+        <td><Button onClick={() => deleteContact(actor.id)} className="btn btn-danger">Remove</Button></td>
       </tr>
     })
   }
@@ -66,12 +68,14 @@ function App() {
   }
 
   return (
-    <div>
-      <Header />
-      <button onClick={() => randomizeContact()}>Add Random Contact</button>
-      <SortNameButton sortName={sortName} />
-      <SortPopButton sortByPop={sortByPop} />
-      <table>
+    <>
+      <div className="header">
+        <Header />
+        <Button onClick={() => randomizeContact()}>Add Random Contact</Button>
+        <SortNameButton sortName={sortName} />
+        <SortPopButton sortByPop={sortByPop} />
+      </div>
+      <Table responsive>
         <thead>
           <tr>
             <th>Picture</th>
@@ -84,8 +88,8 @@ function App() {
           {displayActors(actors.slice(0, 5))}
 
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </>
   );
 }
 
