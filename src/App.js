@@ -6,7 +6,7 @@ import SortNameButton from './components/SortNameButton';
 import SortPopButton from './components/SortPopButton';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-
+import { DropdownButton, Dropdown } from "react-bootstrap";
 function App() {
   // Use hooks for initial state
   const [actors, setActors] = useState([])
@@ -71,9 +71,11 @@ function App() {
     <>
       <div className="header">
         <Header />
-        <Button onClick={() => randomizeContact()}>Add Random Contact</Button>
-        <SortNameButton sortName={sortName} />
-        <SortPopButton sortByPop={sortByPop} />
+        <DropdownButton title="Options" >
+          <Dropdown.Item> <Button onClick={() => randomizeContact()}>Random Contact</Button></Dropdown.Item>
+          <Dropdown.Item> <SortNameButton sortName={sortName} /></Dropdown.Item>
+          <Dropdown.Item><SortPopButton sortByPop={sortByPop} /></Dropdown.Item>
+        </DropdownButton>
       </div>
       <Table responsive>
         <thead>
