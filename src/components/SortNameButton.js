@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 const SortNameButton = (props) => {
     return (
         <>
-            <Button onClick={() => props.sortName()}>Sort By Name</Button>
+            <Button variant="secondary" onClick={() => props.sortName()}>Sort By Name</Button>
         </>
     );
 };

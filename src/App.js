@@ -70,9 +70,9 @@ function App() {
   return (
     <>
       <div className="header">
-        <Header />
-        <DropdownButton title="Options" >
-          <Dropdown.Item> <Button onClick={() => randomizeContact()}>Random Contact</Button></Dropdown.Item>
+        <Header id="head" />
+        <DropdownButton variant="dark" title="Options" >
+          <Dropdown.Item> <Button variant="secondary" onClick={() => randomizeContact()}>Random Contact</Button></Dropdown.Item>
           <Dropdown.Item> <SortNameButton sortName={sortName} /></Dropdown.Item>
           <Dropdown.Item><SortPopButton sortByPop={sortByPop} /></Dropdown.Item>
         </DropdownButton>
